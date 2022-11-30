@@ -14,7 +14,8 @@ void Area(int base, int height) {
     area = base * height / 2;
 
     // Output
-    std::cout << "\nThe area of the triangle is " << area << " cm²." << std::endl;
+    std::cout << "\nThe area of the triangle is " << area << " cm²."
+    << std::endl;
 }
 
 int main() {
