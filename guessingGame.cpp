@@ -2,41 +2,44 @@
 
 // Created by: Marshall Demars
 // Created on: Nov 2022
-// This program sees if you guess the right number using while true
+// This program calculates area of triangle using functions
 
 #include <iostream>
-#include <random>
-#include <string>
+
+void Area(int base, int height) {
+    // This function calculates the area of the triangle
+    int area;
+
+    // Process
+    area = base * height / 2;
+
+    // Output
+    std::cout << "The area of the triangle is " << area << " cm²." << std::endl;
+}
 
 int main() {
-    // This program sees if you guess the right number using while true
-    int guessAsInt;
-    int randomNumber;
-    std::string guessAsString;
+    // This function gets user inputs and does try catch
+    std::string base_as_string;
+    std::string height_as_string;
+    int base;
+    int height;
 
-    while (true) {
-        std::random_device rseed;
-        std::mt19937 rgen(rseed());
-        std::uniform_int_distribution<int> idist(0, 9);
-        randomNumber = idist(rgen);
+    // Input
+    std::cout << "Enter the base length of the triangle (cm): ";
+    std::cin >> base_as_string;
+    std::cout << "" << std::endl;
+    std::cout << "Enter the height of the triangle (cm): ";
+    std::cin >> height_as_string;
 
-        // Input
-        std::cout << "\nEnter the number between 0-9: ";
-        std::cin >> guessAsString;
-        std::cout << std::endl;
-
-        // Process and Output
-        try {
-            guessAsInt = std::stoi(guessAsString);
-            if (guessAsInt == randomNumber) {
-                std::cout << "\nYou guessed right." << std::endl;
-                break;
-            } else {
-                std::cout << "\nYou guessed wrong, try again." << std::endl;
-            }
-        } catch (std::invalid_argument) {
-            std::cout << "\nPlease enter a valid number." << std::endl;
-        }
+    // try and catch
+    try {
+        base = std::stoi(base_as_string);
+        height = std::stoi(height_as_string);
+        // Call function
+        Area(base, height);
+    } catch (std::invalid_argument) {
+        std::cout << "\nInvalid Input." << std::endl;
     }
-    std::cout << "\nDone.";
+
+    std::cout << "\nDone." << std::endl;
 }
